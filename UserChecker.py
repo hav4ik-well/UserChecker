@@ -8,7 +8,7 @@ from .. import loader, utils
 
 @loader.tds
 class UsernameChecker(loader.Module):
-    """Поиск свободных юзернеймов в Telegram"""
+    """Поиск свободных юзернеймов в Telegram, не всегда точный"""
 
     strings = {
         "name": "UseChecker",
