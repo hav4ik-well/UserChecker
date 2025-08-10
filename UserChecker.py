@@ -5,11 +5,11 @@ import asyncio
 from .. import loader, utils
 
 @loader.tds
-class UsernameChecker(loader.Module):
+class UserChecker(loader.Module):
     """Поиск 5 свободных юзернеймов через Telegram API"""
 
     strings = {
-        "name": "UsernameChecker",
+        "name": "UserChecker",
         "searching": "🔍 Ищу 5 свободных юзернеймов...",
         "found": "🎉 Найдены свободные юзернеймы:\n\n{}",
         "not_found": "😕 Не удалось найти 5 свободных юзернеймов за 100 попыток",
