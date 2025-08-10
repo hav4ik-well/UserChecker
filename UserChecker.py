@@ -1,16 +1,15 @@
 # meta developer: @wifitldev
-# version: 1.0.2
 
 import random
 import asyncio
 from .. import loader, utils
 
 @loader.tds
-class UserChecker(loader.Module):
+class UsernameChecker(loader.Module):
     """Поиск 5 свободных юзернеймов через Telegram API"""
 
     strings = {
-        "name": "UserrnameChecker",
+        "name": "UsernameChecker",
         "searching": "🔍 Ищу 5 свободных юзернеймов...",
         "found": "🎉 Найдены свободные юзернеймы:\n\n{}",
         "not_found": "😕 Не удалось найти 5 свободных юзернеймов за 100 попыток",
@@ -27,9 +26,10 @@ class UserChecker(loader.Module):
             await self.client.get_entity(username)
             return False  
         except ValueError:
-            return True
+            return True   
         except Exception:
             return False  
+
     @loader.command(
         ru_doc="Найти 5 свободных юзернеймов",
         en_doc="Find 5 available usernames"
@@ -48,10 +48,10 @@ class UserChecker(loader.Module):
                 if await self.check_username(username):
                     usernames.append(f"• @{username} - t.me/{username}")
                 attempts += 1
-                await asyncio.sleep(0.3)
+                await asyncio.sleep(0.3)  
 
             if usernames:
-                result = self.strings["found"].format("\n".join(usernames[:5]))
+                result = self.strings["found"].format("\n".join(usernames[:5]))  # Берем первые 5
             else:
                 result = self.strings["not_found"]
                 
